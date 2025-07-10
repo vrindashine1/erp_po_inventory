@@ -1,0 +1,39 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+*.pyd
+*.pyo
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+dist/
+eggs/
+*.egg-info/
+.env/
+venv/
+env/
+
+# Editors
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+.Trash/
+Thumbs.db
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3 # If you were using SQLite, but we are using PostgreSQL
+/media # If you handle user-uploaded media files
+/static # If you collect static files locally
+
+# PostgreSQL specific (if any local configuration files exist)
+pg_hba.conf
+pg_ident.conf
+postgresql.conf
