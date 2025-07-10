@@ -96,15 +96,19 @@ Before you begin, ensure you have:
     * Update the `DATABASES` section with your PostgreSQL credentials:
         python
         DATABASES = {
-            'default': {
-                'ENGINE': 'django.db.backends.postgresql',
-                'NAME': 'erp_db',
-                'USER': 'erp_user',
-                'PASSWORD': 'your_secure_password', # Use the password you set above
-                'HOST': 'localhost',
-                'PORT': '5432',
-            }
-        }
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('DB_NAME', 'erp_db'),
+        'USER': os.environ.get('DB_USER', 'erp_user'), 
+        'PASSWORD': os.environ.get('DB_PASSWORD'), 
+        'HOST': os.environ.get('DB_HOST', 'localhost'),
+        'PORT': os.environ.get('DB_PORT', '5432'),
+    }
+   }
+
+   SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
+
+
         
     * Ensure `INSTALLED_APPS` includes:
         python
@@ -117,6 +121,19 @@ Before you begin, ensure you have:
         ]
         
     * Add `AUTH_USER_MODEL = 'core.User'` to use the custom user model.
+6.    **Set up Environment Variables:**
+    * Create a file named `.env` in the root of your project.
+    * Add the following variables to it:
+        .env
+        DB_NAME=erp_db
+        DB_USER=erp_user
+        DB_PASSWORD= YOUR_ACTUAL_DB_PASSWORD
+        DJANGO_SECRET_KEY=your_secret__key_here
+        
+    * **Important:**
+        * Replace `YOUR_ACTUAL_DB_PASSWORD` with the actual password for your postgresql .
+        * Replace `your_secret__key_here` with a long, random string.
+        
 
 ### 3. Run Migrations
 
